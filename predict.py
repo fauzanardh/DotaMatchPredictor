@@ -1,3 +1,4 @@
+import os
 import pickle
 import xgboost
 import pandas as pd
@@ -34,7 +35,7 @@ def parse_opendota_matches(match_id: int) -> pd.DataFrame:
     :param match_id:
     :return:
     """
-    url = f"https://api.opendota.com/api/matches/{match_id}?api_key=8ed1394d-68be-4235-9ebb-c72e88328409"
+    url = f"https://api.opendota.com/api/matches/{match_id}?api_key={os.environ['OPENDOTA_API_KEY']}"
     r = requests.get(url)
     if r.status_code == 200:
         # Copy the default X and y
