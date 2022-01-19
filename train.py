@@ -119,6 +119,6 @@ xgbc.fit(X_pca, y)
 
 # Saving the best model and pca
 print("Saving the best model and pca...")
-xgbc.save_model("models/xgbc.pkl")
+xgbc.save_model("models/xgbc.bin")
 with open("models/pca.pkl", "wb") as f:
     pickle.dump(pca_model, f)
