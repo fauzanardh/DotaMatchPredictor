@@ -74,9 +74,11 @@ print("Loading the PCA...")
 pca = pickle.load(open("models/pca.pkl", "rb"))
 
 print("Parsing the match...")
-X, y = parse_opendota_matches(1546062211)
+X, y = parse_opendota_matches(1574041530)
 print("Transforming the features to the PCA space...")
 X = pca.transform(X)
 print("Predicting...")
 pred = model.predict(X)
-print(f"Is Radiant Win: {pred[0]}, Actual: {y.loc[0, 'radiant_win']}")
+winner = "Radiant" if pred[0] == 1 else "Dire"
+actual_winner = "Radiant" if y.loc[0, "radiant_win"] == 1 else "Dire"
+print(f"Predicted winner: {winner} (actual: {actual_winner})")
